@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+</head>
+<body>
+<header th:fragment="header">
+    <nav>
+        <a th:href="@{/}">Главная</a>
+
+        <a sec:authorize="isAuthenticated()" th:href="@{/my-rentals}">Мои аренды</a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}">Панель админа</a>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/login}">Войти</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Выйти</a>
+    </nav>
+</header>
+</body>
+</html>
